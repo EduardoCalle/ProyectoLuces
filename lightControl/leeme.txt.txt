@@ -1,0 +1,5 @@
+Repositorio: ProyectoLuces
+Fecha Inicio: 04/02/2015
+
+Descripción:
+Programa de arduino para el manejo de las luces del proyecto UCB.
