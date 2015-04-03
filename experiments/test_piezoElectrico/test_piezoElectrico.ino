@@ -8,7 +8,7 @@
 
 Adafruit_DotStar strip = Adafruit_DotStar(NUMPIXELS, DATAPIN, CLOCKPIN);
 
-
+// Este es un experimento
 void setup() {
 
 #if defined(__AVR_ATtiny85__) && (F_CPU == 16000000L)
