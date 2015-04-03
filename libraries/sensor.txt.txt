@@ -1,0 +1,26 @@
+Libreria <sensor.h>
+
+La libreria <sensor.h> implementa la clase sensor. Se deben instanciar un objeto de la clase para usarlo.
+
+Funciones implementadas en la clase:
+
+Constantes:
+DIGITAL 1
+ANALOG  0
+
+Funciones:
+sensor(int sensorPin, byte type);
+
+	Esta función permite inicializar un sensor. Se debe especificar el número de pin al que está conectado
+	el sensor en la tarjeta y el tipo de sensor.
+
+		Ejemplo: sensor dSensor1=sensor(12,DIGITAL)
+
+		Crea el objeto dSensor1, que se encuentra conectado al pin 12 del arduino y lo define como un sensor digital.
+
+
+int readSensor(void);
+	Esta funcion devuelve el valor del sensor. El sistema lee correctamente el sensor dependiendo si fue definido como
+        un sensor analogico o digital. El dato se almacena en una variable de tipo entero
+		
+		Ejemplo: valorSensor=dSensor1.readSensor();
