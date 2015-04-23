@@ -87,12 +87,12 @@ void loop() {
 //    Serial.println(tiempo,DEC);
     velocidad=0.61/((float)tiempo/1000); 
     if(velocidad>0 & velocidad<4) {
-     luz1.setRGB(255,0,0);
+     luz1.setRGB(0,255,0);
      luz1.show();
      delay(switchdelay(velocidad));
   //   Serial.println(switchdelay(velocidad));
      
-     luz2.setRGB(0,255,0);
+     luz2.setRGB(0,0,255);
      luz2.show();       
      luz1.setRGB(0,0,0);
      luz1.show();
