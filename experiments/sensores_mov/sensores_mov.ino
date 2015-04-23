@@ -1,12 +1,15 @@
-int sensor0 = A0; // Leeremos del pin A0
-int sensor1 = A1;
-int sensorState = 0; // Variable para leer los datos del sensor
-const int rojo = 9;
-const int verde = 11;
-const int azul = 10;
+const int sensor0 = 2; 
+const int sensor1 = 4;
+int sensor0State = 0; 
+int sensor1State = 0;
+
+const int rojo = 8;
+const int verde = 12;
+const int azul = 7;
 
 void setup() {
 pinMode(sensor0,INPUT);
+pinMode(sensor1,INPUT);
 pinMode (rojo, OUTPUT);
 pinMode (verde, OUTPUT);
 pinMode (azul, OUTPUT);
@@ -16,26 +19,38 @@ Serial.begin(9600);
 void loop(){
 
  // leer sensor
-sensorState1 = analogRead(sensor0); 
-sensorState2 = analogRead(sensor1);
+ sensor0State = digitalRead(sensor0); 
+ sensor1State = digitalRead(sensor1);
 
  // Impresión de los valores leídos por el sensor
 
  Serial.print("sensor0 = ");
- Serial.println(sensorState);
+ Serial.println(sensor0State);
  
- if (sensorState == HIGH) {
+ if (sensor0State == HIGH) {
     digitalWrite(rojo, 255);
     digitalWrite(verde, 0);
     digitalWrite(azul, 0);
-    delay(1000);
+    
+ if (sensor0State == LOW) {
+    digitalWrite(rojo, 0);
+    digitalWrite(verde, 0);
+    digitalWrite(azul, 0);
     } 
-
-  if (sensorState2 == HIGH) {
+ }
+Serial.print("sensor1 = ");
+ Serial.println(sensor1State);
+ 
+  if (sensor1State == HIGH) {
     digitalWrite(rojo, 0);
     digitalWrite(verde, 0);
     digitalWrite(azul, 255);
+    
+  if (sensor1State == LOW) {
+    digitalWrite(rojo, 0);
+    digitalWrite(verde, 0);
+    digitalWrite(azul, 0);
   } 
-
+  }
 } 
 
