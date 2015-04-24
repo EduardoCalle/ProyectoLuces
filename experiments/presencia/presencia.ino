@@ -205,7 +205,7 @@ void loop() {
      Serial.println("Luz2 off");
 
     } else {
-      flag1=0;
+      flag1=0; // flag
       flag2=0;
     }
     
