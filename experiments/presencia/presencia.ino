@@ -76,11 +76,11 @@ void loop() {
        flag4=1;
      }
   }
-  if(flag3>0 & millis()-timer3>4000){
+  if(flag3==1 & millis()-timer3>4000){
     flag3=0;
           Serial.println("Ready for next experiment!");
   }
-  if(flag4>0 & millis()-timer4>4000){
+  if(flag4==1 & millis()-timer4>4000){
     flag4=0;
           Serial.println("Ready for next experiment!");
   }
@@ -90,7 +90,7 @@ void loop() {
   {
     tiempo=(timer4-timer3); 
 //    Serial.println(tiempo,DEC);
-    velocidad=0.61/((float)tiempo/1000); 
+    velocidad=0.6/((float)tiempo/1000); 
     
     distanciaSensorLuz = 2.5;
     
@@ -102,7 +102,7 @@ void loop() {
      luz1.show();
      // delay(switchdelay(velocidad));
      // Serial.println(switchdelay(velocidad));
-     
+          delay(switchdelay(velocidad*1.2));
      // Trying fade lights 
      luz2.setRGB(0,0,255);
      luz2.show();       
@@ -112,7 +112,7 @@ void loop() {
      Serial.println(" milisegundos ");     
      luz1.fadeInTime(50, tiempoApagado/2);
      Serial.println("Luz 1 off");
-          
+               delay(switchdelay(velocidad*1.2));
      Serial.print("Inicio de apagado de Luz 2 en en 50 pasos de ");
      Serial.print(tiempoApagado/2);
      Serial.println(" milisegundos");
@@ -165,11 +165,11 @@ void loop() {
        flag2=1;
      }
   }
-  if(flag1>0 & millis()-timer1>4000){
+  if(flag1==1 & millis()-timer1>4000){
     flag1=0;
           Serial.println("Ready for next experiment!");
   }
-  if(flag2>0 & millis()-timer2>4000){
+  if(flag2==1 & millis()-timer2>4000){
     flag2=0;
           Serial.println("Ready for next experiment!");
   }
@@ -189,6 +189,7 @@ void loop() {
     if(velocidad>0 & velocidad<4) {
      luz2.setRGB(0,0,255);
      luz2.show();
+     delay(switchdelay(velocidad*1.2));
      luz1.setRGB(0,255,0);
      luz1.show();            
      Serial.print("Inicio de apagado de Luz 1 en 50 pasos de ");
@@ -200,7 +201,7 @@ void loop() {
      Serial.print("Inicio de apagado de Luz 2 en en 50 pasos de ");
      Serial.print(tiempoApagado);
      Serial.println(" milisegundos");
-     
+     delay(switchdelay(velocidad*1.2));
      luz1.fadeInTime(50,tiempoApagado/2);
      Serial.println("Luz2 off");
 
