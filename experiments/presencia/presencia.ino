@@ -23,9 +23,7 @@ long tiempo=0;
 float distanciaSensorLuz = 2;
 float distanciaEntreLuces = 0.5;
 // tiempo de apagado de luz 1
-long apagadoT1 = 1500;
-// tiempo de apagado de luz 2
-long apagadoT2 = 2000; 
+long tiempoApagado = 1500;
     
 int flag1=0;
 int flag2=0;
@@ -94,15 +92,11 @@ void loop() {
 //    Serial.println(tiempo,DEC);
     velocidad=0.61/((float)tiempo/1000); 
     
-    distanciaSensorLuz = 2.1;
-    distanciaEntreLuces = 0.4;
+    distanciaSensorLuz = 2.5;
     
     // tiempo de apagado de luz 1
-    apagadoT1 = round(velocidad*distanciaSensorLuz*1000/50); 
-    
-    // tiempo de apagado de luz 2
-    apagadoT2 = round(velocidad*distanciaSensorLuz*1000/50); 
-    
+    tiempoApagado = round(velocidad*distanciaSensorLuz*1000/100); 
+        
     if(velocidad>0 & velocidad<4) {
      luz1.setRGB(0,255,0);
      luz1.show();
@@ -114,15 +108,15 @@ void loop() {
      luz2.show();       
      
      Serial.print("Inicio de apagado de Luz 1 en 50 pasos de ");
-     Serial.print(apagadoT1);
+     Serial.print(tiempoApagado/2);
      Serial.println(" milisegundos ");     
-     luz1.fadeInTime(50, apagadoT1);
+     luz1.fadeInTime(50, tiempoApagado/2);
      Serial.println("Luz 1 off");
           
      Serial.print("Inicio de apagado de Luz 2 en en 50 pasos de ");
-     Serial.print(apagadoT2);
+     Serial.print(tiempoApagado/2);
      Serial.println(" milisegundos");
-     luz2.fadeInTime(50, apagadoT2);
+     luz2.fadeInTime(50, tiempoApagado/2);
      Serial.println("Luz 2 off");
 
     } else {
@@ -188,30 +182,26 @@ void loop() {
     velocidad=0.6/((float)tiempo/1000); 
     
     distanciaSensorLuz = 2.1;
-    distanciaEntreLuces = 0.4;
     
     // tiempo de apagado de luz 1
-    apagadoT1 = round(velocidad*distanciaSensorLuz*1000/50); 
+    tiempoApagado = round(velocidad*distanciaSensorLuz*1000/100); 
     
-    // tiempo de apagado de luz 2
-    apagadoT2 = round(velocidad*distanciaSensorLuz*1000/50); 
-   
     if(velocidad>0 & velocidad<4) {
      luz2.setRGB(0,0,255);
      luz2.show();
      luz1.setRGB(0,255,0);
      luz1.show();            
      Serial.print("Inicio de apagado de Luz 1 en 50 pasos de ");
-     Serial.print(apagadoT1);
+     Serial.print(tiempoApagado/2);
      Serial.println(" milisegundos ");
 
-     luz2.fadeInTime(50, apagadoT2);
+     luz2.fadeInTime(50, tiempoApagado/2);
      Serial.println("Luz1 off");
      Serial.print("Inicio de apagado de Luz 2 en en 50 pasos de ");
-     Serial.print(apagadoT2);
+     Serial.print(tiempoApagado);
      Serial.println(" milisegundos");
      
-     luz1.fadeInTime(50,apagadoT1);
+     luz1.fadeInTime(50,tiempoApagado/2);
      Serial.println("Luz2 off");
 
     } else {
