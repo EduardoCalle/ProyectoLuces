@@ -131,6 +131,41 @@ void light::linealTo(int R,int G,int B,int nroPasos, int tiempo)
   }
 }
 
+
+// Fade from Current Values to 0 and in time T
+void light::fadeInTime(int nroPasos, int tiempo)
+{
+  double decR=(double)(getRed())/nroPasos;
+  double decG=(double)(getGreen())/nroPasos;
+  double decB=(double)(getBlue())/nroPasos;
+  //Serial.println(incR,DEC);
+  //Serial.println(incG,DEC);
+  //Serial.println(incB,DEC);
+  float rTemp=rValue;
+  float gTemp=gValue;
+  float bTemp=bValue;
+  for(int i=1;i<=nroPasos;i++)
+  {
+     rTemp-=decR;
+     gTemp-=decG;
+     bTemp-=decB;
+
+     if (i==nroPasos) {
+     	rTemp = 0;
+     	gTemp = 0;
+     	bTemp = 0;
+     }
+
+     rValue=(int)rTemp;
+     gValue=(int)gTemp;
+     bValue=(int)bTemp;
+     show();
+     delay(tiempo);
+     //Serial.println(rValue);
+  }
+}
+
+
 void light::cubicTo(int R, int G, int B, int nroPasos, int tPausa)
 {  
    float aRed=rValue;

@@ -30,6 +30,7 @@ class light
     void setYUV(float Y, float U, float V);
     void fadeIn(void);
     void linealTo(int R,int G,int B,int nroPasos, int tiempo);
+    void fadeInTime(int nroPasos, int tiempo);
     void cubicTo(int R, int G, int B, int nroPasos, int tPausa);
     
     // void fadeOut(void);
